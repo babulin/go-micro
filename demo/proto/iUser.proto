@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package demo;
+option go_package = ".;local_service_Hello"; // 添加此行代码
+
+//接口
+service iUser{
+  rpc Login(LoginRequest) returns (LoginResponse){}
+  rpc Register(RegisterRequest) returns (RegisterResponse){}
+  rpc GetInfo(InfoRequest) returns (InfoResponse){}
+}
+
+//登录
+message LoginRequest{
+  string username = 1;
+  string password = 2;
+}
+message LoginResponse{
+  string token = 1;
+}
+
+// 注册
+message RegisterRequest{
+  string name = 1;
+  string mobile = 2;
+}
+message RegisterResponse{
+  string code = 1;
+  string msg = 2;
+}
+
+// 获取用户信息
+message InfoRequest{
+  string token = 1;
+  string mobile = 2;
+}
+message InfoResponse{
+  string code = 1;
+  string msg = 2;
+  int64 id = 3;
+  string name = 4;
+  string mobile = 5;
+}

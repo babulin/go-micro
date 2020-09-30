@@ -9,14 +9,6 @@ import (
 	"micro/protos"
 )
 
-type Greeter struct {
-}
-
-func (g *Greeter) Hello(context context.Context, req *protos.Request, rsp *protos.Response) error {
-	rsp.Greeting = "[3]Hello " + req.Name
-	return nil
-}
-
 func main() {
 	//注册到consul
 	reg := consul.NewRegistry(func(options *registry.Options) {

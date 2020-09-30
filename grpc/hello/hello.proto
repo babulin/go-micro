@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package hello;
+option go_package = ".;local_service_Hello"; // 添加此行代码
+
+//接口
+service Hello{
+  rpc SayHello(HelloRequest) returns (HelloResponse){}
+}
+
+//入参
+message HelloRequest{
+  string name = 1;
+}
+
+//结果
+message HelloResponse{
+  string msg = 1;
+}
+
+
+
